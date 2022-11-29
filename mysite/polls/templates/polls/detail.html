@@ -1,4 +1,5 @@
 <head>
+  <!-- Styles to make the web looks better -->
   <style>
     body {
          background: linear-gradient(to right, #0ee9ef, #edbf65);
@@ -25,16 +26,22 @@
   </style>
 </head>
 
+<!-- Create the form to save the result of the vote -->
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 <fieldset>
+    <!-- Print the text of the question selected -->
     <legend><h1>{{ question.question_text }}</h1></legend>
+    <!-- Print the error text if you press to vote and you don't choose an option -->
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <!-- Print the several options for the question selected -->
     {% for choice in question.choice_set.all %}
         <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
         <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
     {% endfor %}
 </fieldset>
+<!-- Bottom to send the vote -->
 <input class="send" type="submit" value="Vote">
 </form>
+<!-- Url to return to the page of all questions -->
 <a class="send "href="/polls/">See all questions</a>

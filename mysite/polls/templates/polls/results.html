@@ -1,4 +1,5 @@
 <head>
+  <!-- Styles to make the web looks better -->
   <style>
     body {
       background: linear-gradient(to right, #0ee9ef, #edbf65);
@@ -32,12 +33,15 @@
   </style>
 </head>
 
+<!-- To print the text of the question selected -->
 <h1>{{ question.question_text }}</h1>
 
+<!-- To show all the options that the question has  -->
 <ul>
 {% for choice in question.choice_set.all %}
     <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
 {% endfor %}
 </ul>
 
+<!-- The url to return to the details.html and vote again -->
 <a href="{% url 'polls:detail' question.id %}">Vote again?</a>

@@ -1,4 +1,5 @@
 <head>
+  <!-- Styles to make the web looks better -->
   <style>
     body {
          background: linear-gradient(to right, #0ee9ef, #edbf65);
@@ -29,10 +30,13 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
+  <!-- Print sign up text -->
   <h2>Sign up</h2>
+  <!-- To create the form to be able to create a new user -->
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    <!-- Send the form complete and create the new user -->
     <button class="singup" type="submit">Sign Up</button>
   </form>
 {% endblock %}
