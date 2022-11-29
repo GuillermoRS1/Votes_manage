@@ -1,0 +1,38 @@
+<head>
+  <style>
+    body {
+         background: linear-gradient(to right, #0ee9ef, #edbf65);
+         font-size: 20px;
+         margin-left: 20px;
+         margin-top: 20px;
+        }
+    .singup {
+        margin-top: 10px;
+        margin-left: 10px;
+        text-decoration: none;
+        padding: 10px;
+        font-weight: 600;
+        font-size: 15px;
+        color: #3e22ff;
+        background-color: #0bffed;
+        border-radius: 6px;
+        border: 2px solid #0016b0;
+    }
+    .singup:hover {
+        color: #0bffed;
+        background-color: #3e22ff;
+    }
+  </style>
+</head>
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="singup" type="submit">Sign Up</button>
+  </form>
+{% endblock %}

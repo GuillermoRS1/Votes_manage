@@ -1,0 +1,40 @@
+<head>
+  <style>
+    body {
+         background: linear-gradient(to right, #0ee9ef, #edbf65);
+         font-size: 20px;
+         margin-left: 20px;
+         margin-right: 20px;
+        }
+    .send {
+        margin-top: 10px;
+        margin-left: 10px;
+        text-decoration: none;
+        padding: 10px;
+        font-weight: 600;
+        font-size: 15px;
+        color: #3e22ff;
+        background-color: #0bffed;
+        border-radius: 6px;
+        border: 2px solid #0016b0;
+    }
+    .send:hover {
+        color: #0bffed;
+        background-color: #3e22ff;
+    }
+  </style>
+</head>
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+<fieldset>
+    <legend><h1>{{ question.question_text }}</h1></legend>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% for choice in question.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+    {% endfor %}
+</fieldset>
+<input class="send" type="submit" value="Vote">
+</form>
+<a class="send "href="/polls/">See all questions</a>

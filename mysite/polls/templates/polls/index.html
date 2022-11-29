@@ -1,0 +1,43 @@
+<head>
+  <style>
+    body {
+         background: linear-gradient(to right, #0ee9ef, #edbf65);
+         font-size: 20px;
+         margin-left: 20px;
+         margin-top: 20px;
+        }
+    li {
+        padding-top: 8px;
+    }
+
+    a{
+        text-decoration:none;
+        border:#0016b0 0.3px solid;
+        text-color: #080808;
+        background: #0bffed;
+    }
+    a:visited {
+        color:#3e22ff;
+    }
+    a:hover {
+        color: #0bffed;
+        background: #3e22ff;
+    }
+
+  </style>
+</head>
+
+{% load static %}
+<h2> Select one question and vote </h2>
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <!-- To point to the detail view with namespace: -->
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        {% endfor %}
+    </ul>
+<br>
+<a class="send "href="/">Go to home page</a>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

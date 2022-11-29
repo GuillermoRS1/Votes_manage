@@ -1,0 +1,43 @@
+<head>
+  <style>
+    body {
+      background: linear-gradient(to right, #0ee9ef, #edbf65);
+      font-size: 20px;
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+    a {
+      outline: none;
+      text-decoration: none;
+      display: inline-block;
+      width: 19.5%;
+      margin-right: 0.625%;
+      text-align: center;
+      line-height: 1.5;
+      color: black;
+    }
+
+    a:link, a:visited, a:focus {
+      background: yellow;
+    }
+
+    a:hover {
+      background: orange;
+    }
+
+    a:active {
+      background: red;
+      color: white;
+    }
+  </style>
+</head>
+
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>

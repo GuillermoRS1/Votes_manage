@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+<head>
+  <style>
+    body {
+     background: linear-gradient(to right, #0ee9ef, #edbf65);
+     font-size: 20px;
+    }
+
+    div{
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+
+    a {
+      outline: none;
+      text-decoration: none;
+      display: inline-block;
+      width: 19.5%;
+      margin-right: 0.625%;
+      text-align: center;
+      line-height: 1.5;
+      color: black;
+    }
+
+    a:link, a:visited, a:focus {
+      background: yellow;
+    }
+
+    a:hover {
+      background: orange;
+    }
+
+    a:active {
+      background: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div>
+  {% if user.is_authenticated %}
+    Hi {{ user.username }}!
+    <!-- Redirect to the page for the password change process -->
+    <p><a href="/polls/">Question</a></p>
+    <!-- Redirect to the page for the password change process -->
+    <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+    <!-- To logout of your account session -->
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
+  {% else %}
+    <p>You are not logged in</p>
+    <!-- If you are not logged in, click on the button to log in -->
+    <a href="{% url 'login' %}">Log In</a>
+  {% endif %}
+  </div>
+</body>
+
+{% endblock %}
