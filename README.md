@@ -1,7 +1,3 @@
-# CA2_Guillermo_Ruiz_Senso_71235
-
-Project CA2 made by Guillermo Ruiz Senso 71235.
-
 This project consists of the development of a web page for the management of the votes to the answer of some questions.
 questions, with some restrictions if you are not login. When you enter the web you will have to login and in case you
 are not registered you will have the button of the button to be able to register on the site and be able to enter to vote.
